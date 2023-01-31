@@ -15,9 +15,8 @@ func homeHandler(w http.ResponseWriter, _ *http.Request) {
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 
-	http.Handle("/api", router)
-
 	router.HandleFunc("/", homeHandler)
+	http.Handle("/api", router)
 
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
