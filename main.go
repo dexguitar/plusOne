@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func homeHandler(w http.ResponseWriter, _ *http.Request) {
@@ -13,7 +14,8 @@ func homeHandler(w http.ResponseWriter, _ *http.Request) {
 
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/", homeHandler).Methods("GET")
+
+	router.HandleFunc("/api", homeHandler).Methods("GET")
 
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
